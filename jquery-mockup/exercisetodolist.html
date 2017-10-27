@@ -1,36 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Home Page</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <link rel="stylesheet" href="main.css">
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <div id="header-placeholder"></div>
-            
-        <div class="container">
-            <div class="jumbotron">
-                <h3>Exercise To Do List</h3>
-                <p>Whatever</p>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="dist/main.bundle.css">
+</head>
+
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 id="greetings" class="display-3">Workouts List</h1>
+            <p class="lead">This is where you can manage your workouts.</p>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header" id="default-Exercises">
+                            Exercises
+                        </div>
+                        <ul class="list-group list-group-flush" id="listOfExercises">
+                            <li class="list-group-item" id="default-message">You don't any exercises.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon">Time:</span>
+                            <input type="text" class="form-control" id="t" placeholder="(Minutes)"  aria-describedby="basic-addon3"></input>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">Sets:</span>
+                            <input type="text" class="form-control" id="s" placeholder="Amount of sets you did"aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">Reps:</span>
+                            <input type="text" class="form-control" id="r" placeholder="Amount of reps you did" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">Weight:</span>
+                            <input type="text" class="form-control" id="w"  placeholder="Lbs" aria-describedby="basic-addon3">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-header" id="completed-Exercises">
+                                        Finished Exercises
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="completedExercises">
+                                        <li class="list-group-item" id="default-message">You haven't completed any exercises.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-                
         </div>
+    </div>
+    <div id="footer-placeholder"></div>
 
-        <script>
-                var navProperties = {
-                    mainNav: "_nav.html",
-                    currentSection: "Exercise To Do List"
-                };
-        </script>    
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        <script src="navigation.js">
-        </script>
-    </body>
+    <script>
+        var navProperties = {
+            mainNav: "_nav.html",
+            currentSection: "exercisetodolist"
+        };
+    </script>
+    <div id="scripts-placeholder"></div>
+    <script src="dist/bundle.js">
+    </script>
+</body>
+
 </html>

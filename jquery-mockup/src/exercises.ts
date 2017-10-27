@@ -1,17 +1,11 @@
 import * as $ from 'jquery';
-var finishedcount: number;
-var unfinishedcount: number;
-finishedcount = 0;
-unfinishedcount = 0;
-
-export class Quote {
-    text: string
-}
 
 export class Exercise {
     reps: number;
     sets: number;
     name: string;
+    weight: number;
+
     constructor(n: string, s: number, r: number) {
         this.name = n;
         this.sets = s;
@@ -21,46 +15,80 @@ export class Exercise {
 
 export class ExerciseEquip extends Exercise {
     weight: number;
-    constructor(n: string, s: number, r: number, w: number) {
+    time: string;
+    constructor(n: string, t:string, s: number, r: number, w: number) {
         super(n, s, r);
         this.weight = w;
+        this.time = t;
     }
 }
 
 export class User {
     name: string = "Nicholas Moy";
-    finished: ExerciseEquip[] = [];
-    unfinished: ExerciseEquip[] = [];
-    weight: number;
-    picture: string;
-    constructor() {
-        this.finished;
-        this.unfinished;
-    }
+    listOfExercises: ExerciseEquip[] = [
+        { name: "Running", time: "0 minutes", sets: 0, reps: 0, weight: 0 },
+        { name: "Swimming", time: "0 minutes", sets: 0, reps: 0, weight: 0 },
+        { name: "Jumping Jacks", time: "0 minutes", sets: 0, reps: 0, weight: 0 },
+        { name: "Weight Lifting", time: "0 minutes", sets: 0, reps: 0, weight: 0 },
+        { name: "Push Ups", time: "0 minutes", sets: 0, reps: 0, weight: 0 },
+        { name: "Sit Ups", time: "0 minutes", sets: 0, reps: 0, weight: 0 },
+        { name: "Chin Ups", time: "0 minutes", sets: 0, reps: 0, weight: 0 }
+    ];
+    completedExercises: ExerciseEquip[] = [];
 
-    drawFinished(){
-        $("#finished").html(
-            me.finished.map( x => `<li class="list-group-item">${x.name}: Weights: ${x.weight}, Sets: ${x.sets}, Reps: ${x.reps}</li>` ).join("")
+    drawListOfExercises(){
+        $("#listOfExercises").html(
+            this.listOfExercises.map( x => '<li class="list-group-item">' + x.name + '</li>' ).join("")
         );
     }
-    drawUnfinished() {
-        $("#unfinished").html(
-            me.finished.map( y => `<li class="list-group-item">${y.name}: Weights: ${y.weight}, Sets: ${y.sets}, Reps: ${y.reps}</li>` ).join("")
+    drawCompleted(){
+        $("#completedExercises").html(
+            this.completedExercises.map( x => '<li class="list-group-item">'+ x.name + " Time: " + x.time + " Sets: " + x.sets + " Reps: " + x.reps + " Weight: " + x.weight + '</li>' ).join("")
         );
-    }
-    drawPicture() {
-        $("#picture").attr("src", this.picture);
     }
 }
 
-$("#addfinished").on("click", function () {
-    $(function () {
-        finishedcount++;
-        $("#add1").html(`<p>Finished: ${finishedcount}</p>`);
-    });
-});
-
 // Controller
-const me = new User();
-me.drawFinished();
-me.drawUnfinished();
+const user = new User();
+let empty: boolean = true;
+user.drawListOfExercises();
+
+$(".list-group-item").click(function(e) {
+    e.preventDefault();
+    var t = (<HTMLInputElement>document.getElementById("t")).value;
+    var s = parseFloat((<HTMLInputElement>document.getElementById("s")).value);
+    var r = parseFloat((<HTMLInputElement>document.getElementById("r")).value);
+    var w = parseFloat((<HTMLInputElement>document.getElementById("w")).value);
+    if (t.length < 1) {
+        t = "0 minutes";
+    }
+    if (isNaN(s)) {
+        s = 0;
+    }
+    if (isNaN(r)) {
+        r = 0;
+    }
+    if (isNaN(w)) {
+        w = 0;
+    }
+    var nameOfWorkout = e.target.textContent;
+    var newWorkoutList = new ExerciseEquip(nameOfWorkout, t, s, r, w);
+    user.completedExercises.push(newWorkoutList);
+    console.log(JSON.stringify(user.listOfExercises));
+    user.drawCompleted();
+});
+  
+  $(".btn").click(function(e) {
+      e.preventDefault();
+    var nameOfWorkout = (<HTMLInputElement>document.getElementById("name")).value;  
+    var t = (<HTMLInputElement>document.getElementById("t")).value;
+    var s = parseFloat((<HTMLInputElement>document.getElementById("s")).value);
+    var r = parseFloat((<HTMLInputElement>document.getElementById("r")).value);
+    var w = parseFloat((<HTMLInputElement>document.getElementById("w")).value);
+    var nameOfWorkout = e.target.textContent;
+    var newWorkoutList = new ExerciseEquip(nameOfWorkout, t, s, r, w);
+    user.completedExercises.push(newWorkoutList);
+    console.log(JSON.stringify(user.listOfExercises));
+    user.drawCompleted();
+  });
+  
