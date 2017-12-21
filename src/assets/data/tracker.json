@@ -1,0 +1,51 @@
+{
+    "exercise1":{
+    "name": "Running",
+    "time": "0 Minutes",
+    "sets": 0,
+    "reps": 0,
+    "weight": 0
+    },
+    "exercise2":{
+        "name": "Swimming",
+        "time": "0 Minutes",
+        "sets": 0,
+        "reps": 0,
+        "weight": 0
+    },
+    "exercise3":{
+        "name": "Jumping Jacks",
+        "time": "0 Minutes",
+        "sets": 0,
+        "reps": 0,
+        "weight": 0
+    },
+    "exercise4":{
+        "name": "Weight Lifting",
+        "time": "0 Minutes",
+        "sets": 0,
+        "reps": 0,
+        "weight": 0
+    },
+    "exercise5":{
+        "name": "Push Ups",
+        "time": "0 Minutes",
+        "sets": 0,
+        "reps": 0,
+        "weight": 0
+    },
+    "exercise6":{
+        "name": "Sit Ups",
+        "time": "0 Minutes",
+        "sets": 0,
+        "reps": 0,
+        "weight": 0
+    },
+    "exercise7":{
+        "name": "Chin Ups",
+        "time": "0 Minutes",
+        "sets": 0,
+        "reps": 0,
+        "weight": 0
+    }
+}
